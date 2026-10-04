@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Kanban Board</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1><i class="fa-solid fa-layer-group"></i> Project Board</h1>
+            <button id="add-task-btn" class="primary-btn"><i class="fa-solid fa-plus"></i> New Task</button>
+        </header>
+        
+        <main class="board">
+            <!-- To Do Column -->
+            <div class="column" id="todo" data-status="todo">
+                <div class="column-header">
+                    <h2>To Do</h2>
+                    <span class="task-count">0</span>
+                </div>
+                <div class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <!-- Tasks will be injected here -->
+                </div>
+            </div>
+
+            <!-- In Progress Column -->
+            <div class="column" id="in-progress" data-status="in-progress">
+                <div class="column-header">
+                    <h2>In Progress</h2>
+                    <span class="task-count">0</span>
+                </div>
+                <div class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)">
+                </div>
+            </div>
+
+            <!-- Done Column -->
+            <div class="column" id="done" data-status="done">
+                <div class="column-header">
+                    <h2>Done</h2>
+                    <span class="task-count">0</span>
+                </div>
+                <div class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for New Task -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-btn">&times;</span>
+            <h2>Create New Task</h2>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Title</label>
+                    <input type="text" id="task-title" required placeholder="e.g. Design Homepage">
+                </div>
+                <div class="form-group">
+                    <label for="task-desc">Description</label>
+                    <textarea id="task-desc" rows="3" placeholder="Add some details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-priority">Priority</label>
+                    <select id="task-priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button type="submit" class="primary-btn submit-btn">Create Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
